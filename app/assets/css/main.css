@@ -18,7 +18,7 @@
 }
 
 .page-enter {
-    animation: page-fade-up 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: page-fade-up 800ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
