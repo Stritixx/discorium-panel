@@ -41,7 +41,7 @@ function validateForm() {
 
     <Navbar />
 
-    <main class="relative z-10 mx-auto flex min-h-screen w-full max-w-300 items-center justify-center px-5 pb-10 pt-28 sm:px-8 lg:grid lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,1fr)] lg:gap-20 lg:py-28">
+    <main class="page-enter relative z-10 mx-auto flex min-h-screen w-full max-w-300 items-center justify-center px-5 pb-10 pt-28 sm:px-8 lg:grid lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,1fr)] lg:gap-20 lg:py-28">
         <div class="hidden w-full flex-col justify-center gap-6 lg:flex">
             <p class="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-fuchsia-400">
                 <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400 shadow-[0_0_10px_rgba(217,70,239,0.7)]"></span>
