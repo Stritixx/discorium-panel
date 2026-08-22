@@ -44,7 +44,7 @@ function validateForm() {
                 MEMBER ACCESS
             </p>
 
-            <h2 class="max-w-md text-4xl font-semibold leading-[1.1] tracking-[-0.055em] text-white sm:text-5xl lg:text-7xl">Welcome to your <span class="bg-linear-to-r from-white via-fuchsia-200 to-fuchsia-500 bg-clip-text text-transparent">members area</span></h2>
+            <h2 class="max-w-md text-4xl font-bold leading-[1.1] tracking-[-0.055em] text-white sm:text-5xl lg:text-7xl">Welcome to your <span class="bg-linear-to-r from-white via-fuchsia-200 to-fuchsia-500 bg-clip-text text-transparent">members area</span></h2>
             <p class="max-w-sm text-base leading-6 text-zinc-500 sm:text-[18px]">Redeem your Discord member key and connect it to your server in seconds.</p>
 
             <div class="flex items-center gap-4 mt-4">

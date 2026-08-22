@@ -48,6 +48,91 @@
     animation-delay: 150ms;
 }
 
+.stock-heading-enter > * {
+    opacity: 0;
+    animation: page-fade-up 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stock-heading-enter > :nth-child(1) {
+    animation-delay: 60ms;
+}
+
+.stock-refresh-enter {
+    animation: page-fade-up 650ms 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stock-heading-enter > :nth-child(2) {
+    animation-delay: 120ms;
+}
+
+.stock-heading-enter > :nth-child(3) {
+    animation-delay: 180ms;
+}
+
+@keyframes stock-box-slide {
+    from {
+        top: 12px;
+    }
+
+    to {
+        top: 0;
+    }
+}
+
+@keyframes stock-box-cover-fade {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.stock-box-enter {
+    animation: stock-box-slide 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stock-box-enter .stock-box-fade-cover {
+    animation: stock-box-cover-fade 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stock-box-first-enter {
+    animation-delay: 300ms;
+}
+
+.stock-box-left-enter,
+.stock-box-left-enter .stock-box-fade-cover {
+    animation-delay: 300ms;
+}
+
+.stock-box-right-enter,
+.stock-box-right-enter .stock-box-fade-cover {
+    animation-delay: 350ms;
+}
+
+.stock-cards-enter {
+    animation: stock-cards-reveal 800ms 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes stock-cards-reveal {
+    from {
+        opacity: 0;
+        clip-path: inset(100% 0 0 0 round 16px);
+    }
+
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0 round 16px);
+    }
+}
+
+.stock-status-glass {
+    background: rgb(5 5 6 / 0.06);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+}
+
 @keyframes nav-highlight-flow {
     from {
         background-position: 100% 0;
@@ -67,8 +152,14 @@
 @media (prefers-reduced-motion: reduce) {
     .content-left-enter > *,
     .content-right-enter,
+    .stock-box-enter,
+    .stock-box-enter .stock-box-fade-cover,
     .nav-link-active {
         animation: none;
         opacity: 1;
+    }
+
+    .stock-box-enter .stock-box-fade-cover {
+        opacity: 0;
     }
 }
