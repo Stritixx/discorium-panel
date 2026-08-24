@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+    import { ref } from 'vue'
 
-const menuOpen = ref(false)
-const route = useRoute()
+    const menuOpen = ref(false)
+    const route = useRoute()
 
-function linkClasses(path: string) {
-    const active = route.path === path
+    function linkClasses(path: string) {
+        const active = route.path === path
 
-    return active
-        ? 'nav-link-active bg-fuchsia-500/15 text-fuchsia-200 shadow-[0_0_18px_rgba(217,70,239,0.08)]'
-        : 'text-gray-200/80 hover:bg-gray-500/5 hover:text-gray-100'
-}
+        return active
+            ? 'nav-link-active bg-fuchsia-500/15 text-fuchsia-200 shadow-[0_0_18px_rgba(217,70,239,0.08)]'
+            : 'text-gray-200/80 hover:bg-gray-500/5 hover:text-gray-100'
+    }
 </script>
 
 <template>
-    <nav class="fixed top-0 z-99 flex w-full justify-center py-3 sm:py-4">
+    <nav class="fixed top-0 z-99 flex w-full justify-center py-3 sm:py-4 bg-black/50">
         <div class="absolute w-150 h-150 bg-fuchsia-700/10 -top-50 rounded-full blur-[150px] left-1/2 -translate-x-1/2 pointer-events-none select-none"></div>
 
         <div class="flex h-full w-full max-w-300 items-center justify-between gap-3 px-5 sm:px-8">

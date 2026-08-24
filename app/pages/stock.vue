@@ -1,3 +1,43 @@
+<script setup>
+    const offline = ref(0);
+    const online = ref(0);
+    const hasLoadedMembers = ref(false);
+    const isRefreshing = ref(false);
+    
+    const fetchStock = async () => {
+        try {
+            const response = await fetch("https://delivery.discorium.cc/api/stock");
+            const data = await response.json();
+            
+            offline.value = data.offline;
+            online.value = data.online;
+            hasLoadedMembers.value = true;
+        } catch (error) {
+            console.error("Error fetching stock:", error);
+        }
+    }
+
+
+    const refreshStock = async () => {
+        if (isRefreshing.value) return;
+
+        isRefreshing.value = true;
+
+        try {
+            await Promise.all([
+                fetchStock(),
+                new Promise((resolve) => setTimeout(resolve, 600)),
+            ]);
+        } finally {
+            isRefreshing.value = false;
+        }
+    }
+
+    onMounted(() => {
+        fetchStock();
+    })
+</script>
+
 <template>
     <main class="relative z-10 mx-auto flex min-h-screen w-full max-w-300 items-center px-5 pb-10 pt-28 sm:px-8 flex-wrap justify-center flex-col gap-12">
         <div class="flex w-full flex-col gap-6 lg:flex-row lg:items-end lg:gap-8">
@@ -15,9 +55,9 @@
             </div>
 
             <div class="flex w-full flex-col items-start justify-end lg:w-1/2 lg:items-end">
-                <button class="stock-refresh-enter self-end rounded-xl border border-zinc-500/20 px-8 py-2.5 text-zinc-200 flex gap-2 items-center">
-                    <SvgRefreshIcon />
-                    Refresh Stock
+                <button @click="refreshStock" :disabled="isRefreshing" :aria-busy="isRefreshing" class="cursor-pointer stock-refresh-enter self-end rounded-xl border border-zinc-500/20 transition-200 hover:border-zinc-500/40 hover:bg-zinc-500/10 disabled:cursor-not-allowed disabled:opacity-60 px-8 py-2.5 text-zinc-200 flex gap-2 items-center">
+                    <SvgRefreshIcon :class="{ 'animate-spin': isRefreshing }" />
+                    {{ isRefreshing ? 'Refreshing...' : 'Refresh Stock' }}
                 </button>
             </div>
         </div>
@@ -47,7 +87,7 @@
                         <div class="w-full h-8 mt-6">
                             <p class="text-zinc-200 font-semibold text-xl">Offline Members</p>
 
-                            <p class="font-bold text-5xl text-zinc-200 mt-4">5000</p>
+                            <p class="font-bold text-5xl text-zinc-200 mt-4 transition duration-300" :class="hasLoadedMembers ? 'blur-none' : 'blur-sm select-none'">{{ offline }}</p>
                         </div>
                     </div>
 
@@ -88,7 +128,7 @@
                         <div class="w-full h-8 mt-6">
                             <p class="text-zinc-200 font-semibold text-xl">Online Members</p>
 
-                            <p class="font-bold text-5xl text-zinc-200 mt-4">2500</p>
+                            <p class="font-bold text-5xl text-zinc-200 mt-4 transition duration-300" :class="hasLoadedMembers ? 'blur-none' : 'blur-sm select-none'">{{ online }}</p>
                         </div>
                     </div>
 
