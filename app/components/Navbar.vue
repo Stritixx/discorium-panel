@@ -38,7 +38,7 @@
             </div>
 
             <div class="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
-                <NuxtLink to="/shop" class="hidden cursor-pointer rounded-md border border-gray-500/20 px-4 py-2 text-[12px] text-gray-200 transition hover:border-gray-500/30 hover:bg-gray-500/5 md:block">Back to shop</NuxtLink>
+                <NuxtLink to="https://discorium.cc/" class="hidden cursor-pointer rounded-md border border-gray-500/20 px-4 py-2 text-[12px] text-gray-200 transition hover:border-gray-500/30 hover:bg-gray-500/5 md:block">Back to shop</NuxtLink>
 
                 <button type="button" class="group relative flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-gray-200 transition duration-300 md:hidden" :aria-expanded="menuOpen" aria-controls="navigation-menu" aria-label="Toggle navigation menu" @click.stop="menuOpen = !menuOpen">
                     <span class="absolute h-px w-5 rounded-full bg-current transition-all duration-300" :class="menuOpen ? 'rotate-45' : '-translate-y-2'"></span>
@@ -55,7 +55,7 @@
                     <li><NuxtLink to="/" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/')" @click="menuOpen = false">Home</NuxtLink></li>
                     <li><NuxtLink to="/redeem" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/redeem')" @click="menuOpen = false">Redeem Key</NuxtLink></li>
                     <li><NuxtLink to="/stock" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/stock')" @click="menuOpen = false">Stock</NuxtLink></li>
-                    <li><NuxtLink to="/shop" class="block rounded-md px-3 py-2 hover:bg-gray-500/5" @click="menuOpen = false">Shop</NuxtLink></li>
+                    <NuxtLink to="https://discorium.cc/" class="block rounded-md px-3 py-2 hover:bg-gray-500/5" @click="menuOpen = false">Shop</NuxtLink>
                 </ul>
             </div>
         </Transition>

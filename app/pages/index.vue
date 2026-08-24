@@ -26,7 +26,7 @@
                 <SvgKey class="shrink-0" />
             </NuxtLink>
 
-            <NuxtLink to="/shop" class="flex h-12 shrink-0 items-center justify-center rounded-xl border border-zinc-500/20 px-8 text-sm font-semibold text-zinc-200 shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:border-zinc-500/40 hover:bg-zinc-500/10 hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)]">
+            <NuxtLink to="https://discorium.cc/" class="flex h-12 shrink-0 items-center justify-center rounded-xl border border-zinc-500/20 px-8 text-sm font-semibold text-zinc-200 shadow-[0_8px_18px_rgba(0,0,0,0.22)] transition duration-200 hover:-translate-y-1 hover:border-zinc-500/40 hover:bg-zinc-500/10 hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)]">
                 Shop
             </NuxtLink>
         </div>
