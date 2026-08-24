@@ -42,6 +42,14 @@
             submitted.value = true
         }
     }
+
+
+
+    const redeemKey = () => {
+        console.log('Redeem key submitted:', form.serverId, form.redeemKey)
+    }
+
+
 </script>
 
 <template>
@@ -99,7 +107,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="cursor-pointer mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-linear-270 from-fuchsia-400 to-fuchsia-700 text-sm font-semibold text-white shadow-[0_0_28px_rgba(217,70,239,0.28)] transition hover:bg-fuchsia-400">
+                <button @click="redeemKey" type="submit" class="cursor-pointer mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-linear-270 from-fuchsia-400 to-fuchsia-700 text-sm font-semibold text-white shadow-[0_0_28px_rgba(217,70,239,0.28)] transition hover:bg-fuchsia-400">
                     Redeem Key
                 </button>
 
