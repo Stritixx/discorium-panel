@@ -34,7 +34,7 @@ export default defineNuxtConfig({
 				},
 				{
 					property: 'og:title',
-					content: 'Discordium - Premium Services for Discord'
+					content: 'discorium - Premium Services for Discord'
 				},
 				{
 					property: 'og:description',
@@ -46,15 +46,15 @@ export default defineNuxtConfig({
 				},
 				{
 					property: 'og:url',
-					content: 'https://members.discordium.cc'
+					content: 'https://members.discorium.cc'
 				},
 				{
 					property: 'og:image',
-					content: 'https://members.discordium.cc/images/logo.png'
+					content: 'https://members.discorium.cc/images/logo.png'
 				},
 				{
 					property: 'og:site_name',
-					content: 'Discordium'
+					content: 'discorium'
 				},
 				{
 					property: 'og:image:width',
@@ -70,7 +70,7 @@ export default defineNuxtConfig({
 				},
 				{
 					name: 'twitter:title',
-					content: 'Discordium - Premium Services for Discord'
+					content: 'discorium - Premium Services for Discord'
 				},
 				{
 					name: 'twitter:description',
@@ -78,7 +78,7 @@ export default defineNuxtConfig({
 				},
 				{
 					name: 'twitter:image',
-					content: 'https://members.discordium.cc/images/logo.png'
+					content: 'https://members.discorium.cc/images/logo.png'
 				},
 				{
 					name: 'theme-color',
