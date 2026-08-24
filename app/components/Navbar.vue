@@ -18,8 +18,9 @@
 
 
 <template>
-    <nav class="fixed top-0 z-99 flex w-full justify-center bg-black/50 py-3 backdrop-blur-none sm:py-4 md:backdrop-blur-2xl">
-        <div class="absolute w-150 h-150 bg-fuchsia-700/10 -top-50 rounded-full blur-[150px] left-1/2 -translate-x-1/2 pointer-events-none select-none"></div>
+    <div class="fixed top-0 z-99 w-full">
+        <nav class="relative flex w-full justify-center bg-black/50 py-3 backdrop-blur-lg sm:py-4 md:backdrop-blur-2xl">
+            <div class="absolute w-150 h-150 bg-fuchsia-700/10 -top-50 rounded-full blur-[150px] left-1/2 -translate-x-1/2 pointer-events-none select-none"></div>
 
         <div class="flex h-full w-full max-w-300 items-center justify-between gap-3 px-5 sm:px-8">
             <NuxtLink to="/" class="flex shrink-0 items-center gap-3" aria-label="Discorium - Home">
@@ -46,6 +47,7 @@
                 </button>
             </div>
         </div>
+        </nav>
 
         <Transition enter-active-class="transition duration-100 ease-out" enter-from-class="-translate-y-2 opacity-0" enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-100 ease-in" leave-from-class="translate-y-0 opacity-100" leave-to-class="-translate-y-2 opacity-0">
             <div v-if="menuOpen" id="navigation-menu" class="absolute left-0 top-full z-10 w-full rounded-xl border border-fuchsia-500/10 bg-black/55 px-5 py-3 shadow-xl backdrop-blur-2xl sm:px-8 md:hidden">
@@ -57,5 +59,5 @@
                 </ul>
             </div>
         </Transition>
-    </nav>
+    </div>
 </template>
