@@ -1,4 +1,12 @@
 <script setup>
+    useHead({
+	    title: 'Discordium - Live Stock',
+        
+        link: [
+            { rel: 'canonical', href: 'https://members.discordium.cc/stock' }
+        ]
+	});
+
     const offline = ref(0);
     const online = ref(0);
     const hasLoadedMembers = ref(false);

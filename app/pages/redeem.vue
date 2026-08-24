@@ -1,39 +1,47 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+    useHead({
+	    title: 'Discordium - Redeem Panel',
+        
+        link: [
+            { rel: 'canonical', href: 'https://members.discordium.cc/redeem' }
+        ]
+	});
 
-const form = reactive({
-    serverId: '',
-    redeemKey: '',
-})
+    import { reactive, ref } from 'vue'
 
-const errors = reactive({
-    serverId: '',
-    redeemKey: '',
-})
+    const form = reactive({
+        serverId: '',
+        redeemKey: '',
+    })
 
-const submitted = ref(false)
+    const errors = reactive({
+        serverId: '',
+        redeemKey: '',
+    })
 
-function validateForm() {
-    errors.serverId = ''
-    errors.redeemKey = ''
-    submitted.value = false
+    const submitted = ref(false)
 
-    if (!form.serverId.trim()) {
-        errors.serverId = 'Server ID is required.'
-    } else if (!/^\d{17,20}$/.test(form.serverId.trim())) {
-        errors.serverId = 'Enter a valid Discord server ID.'
+    function validateForm() {
+        errors.serverId = ''
+        errors.redeemKey = ''
+        submitted.value = false
+
+        if (!form.serverId.trim()) {
+            errors.serverId = 'Server ID is required.'
+        } else if (!/^\d{17,20}$/.test(form.serverId.trim())) {
+            errors.serverId = 'Enter a valid Discord server ID.'
+        }
+
+        if (!form.redeemKey.trim()) {
+            errors.redeemKey = 'Redeem key is required.'
+        } else if (!/^[A-Za-z0-9]{4}(?:-[A-Za-z0-9]{4}){3}$/.test(form.redeemKey.trim())) {
+            errors.redeemKey = 'Use the format XXXX-XXXX-XXXX-XXXX.'
+        }
+
+        if (!errors.serverId && !errors.redeemKey) {
+            submitted.value = true
+        }
     }
-
-    if (!form.redeemKey.trim()) {
-        errors.redeemKey = 'Redeem key is required.'
-    } else if (!/^[A-Za-z0-9]{4}(?:-[A-Za-z0-9]{4}){3}$/.test(form.redeemKey.trim())) {
-        errors.redeemKey = 'Use the format XXXX-XXXX-XXXX-XXXX.'
-    }
-
-    if (!errors.serverId && !errors.redeemKey) {
-        submitted.value = true
-    }
-}
 </script>
 
 <template>
