@@ -7,7 +7,7 @@
         ]
 	});
 
-    import { reactive, ref } from 'vue'
+    import { reactive } from 'vue'
 
     const form = reactive({
         serverId: '',
@@ -19,34 +19,60 @@
         redeemKey: '',
     })
 
-    const submitted = ref(false)
+    const touched = reactive({
+        serverId: false,
+        redeemKey: false,
+    })
 
-    function validateForm() {
-        errors.serverId = ''
-        errors.redeemKey = ''
-        submitted.value = false
+    const validateField = (field: 'serverId' | 'redeemKey') => {
+        const value = form[field].trim()
 
-        if (!form.serverId.trim()) {
-            errors.serverId = 'Server ID is required.'
-        } else if (!/^\d{17,20}$/.test(form.serverId.trim())) {
-            errors.serverId = 'Enter a valid Discord server ID.'
+        if (field === 'serverId') {
+            if (!value) {
+                errors.serverId = 'Server ID is required.'
+            } else if (!/^\d{17,20}$/.test(value)) {
+                errors.serverId = 'Enter a valid Discord server ID.'
+            } else {
+                errors.serverId = ''
+            }
         }
 
-        if (!form.redeemKey.trim()) {
-            errors.redeemKey = 'Redeem key is required.'
-        } else if (!/^[A-Za-z0-9]{4}(?:-[A-Za-z0-9]{4}){3}$/.test(form.redeemKey.trim())) {
-            errors.redeemKey = 'Use the format XXXX-XXXX-XXXX-XXXX.'
-        }
-
-        if (!errors.serverId && !errors.redeemKey) {
-            submitted.value = true
+        if (field === 'redeemKey') {
+            if (!value) {
+                errors.redeemKey = 'Redeem key is required.'
+            } else if (!/^[A-Za-z0-9]{4}(?:-[A-Za-z0-9]{4}){3}$/.test(value)) {
+                errors.redeemKey = 'Use the format XXXX-XXXX-XXXX-XXXX.'
+            } else {
+                errors.redeemKey = ''
+            }
         }
     }
 
+    function validateForm() {
+        touched.serverId = true
+        touched.redeemKey = true
+        validateField('serverId')
+        validateField('redeemKey')
+    }
 
+    const handleServerIdInput = () => {
+        if (touched.serverId) {
+            validateField('serverId')
+        }
+    }
+
+    const handleRedeemKeyInput = () => {
+        if (touched.redeemKey) {
+            validateField('redeemKey')
+        }
+    }
 
     const redeemKey = () => {
-        console.log('Redeem key submitted:', form.serverId, form.redeemKey)
+        validateForm()
+
+        if (!errors.serverId && !errors.redeemKey) {
+            console.log('Redeem key submitted:', form.serverId, form.redeemKey)
+        }
     }
 
 
@@ -81,7 +107,7 @@
                 <h2 class="mt-3 text-6xl font-bold leading-tight tracking-[-0.04em] text-white sm:text-7xl text-center max-[400px]:text-5xl">Redeem your <span class="bg-linear-to-r from-white via-fuchsia-200 to-fuchsia-500 bg-clip-text text-transparent">member key</span></h2>
             </div>
 
-            <form id="redeem" class="w-full max-w-xl rounded-2xl border border-gray-700/40 bg-black/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.35)] sm:p-8" novalidate @submit.prevent="validateForm">
+            <form id="redeem" class="w-full max-w-xl rounded-2xl border border-gray-700/40 bg-black/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.35)] sm:p-8" novalidate @submit.prevent="redeemKey">
                 <div class="flex items-start justify-between gap-4">
                     <div class="min-w-0">
                         <p class="text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-500">DISCORIUM / REDEEM</p>
@@ -96,22 +122,20 @@
                 <div class="mt-8 space-y-5">
                     <label class="block">
                         <span class="text-xs font-semibold text-zinc-300">Server ID</span>
-                        <input v-model="form.serverId" type="text" name="serverId" inputmode="numeric" autocomplete="off" placeholder="Enter your Discord server ID" :aria-invalid="!!errors.serverId" aria-describedby="server-id-error" class="mt-2 h-12 w-full rounded-xl border bg-gray-500/5 px-4 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:ring-2" :class="errors.serverId ? 'border-red-400/70 focus:border-red-400/70 focus:ring-red-400/10' : 'border-gray-700/50 focus:border-fuchsia-500/60 focus:ring-fuchsia-500/10'" />
-                        <span v-if="errors.serverId" id="server-id-error" class="mt-2 block text-xs text-red-400">{{ errors.serverId }}</span>
+                        <input v-model="form.serverId" @input="handleServerIdInput" type="text" name="serverId" inputmode="numeric" autocomplete="off" placeholder="Enter your Discord server ID" :aria-invalid="!!(touched.serverId && errors.serverId)" aria-describedby="server-id-error" class="mt-2 h-12 w-full rounded-xl border bg-gray-500/5 px-4 text-sm text-white outline-none transition placeholder:text-zinc-600 focus:ring-2" :class="touched.serverId && errors.serverId ? 'border-red-400/70 focus:border-red-400/70 focus:ring-red-400/10' : 'border-gray-700/50 focus:border-fuchsia-500/60 focus:ring-fuchsia-500/10'" />
+                        <span v-if="touched.serverId && errors.serverId" id="server-id-error" class="mt-2 block text-xs text-red-400">{{ errors.serverId }}</span>
                     </label>
 
                     <label class="block">
                         <span class="text-xs font-semibold text-zinc-300">Redeem key</span>
-                        <input v-model="form.redeemKey" type="text" name="redeemKey" autocomplete="off" placeholder="XXXX-XXXX-XXXX-XXXX" :aria-invalid="!!errors.redeemKey" aria-describedby="redeem-key-error" class="mt-2 h-12 w-full rounded-xl border bg-gray-500/5 px-4 text-sm tracking-wider text-white outline-none transition placeholder:text-zinc-600 focus:ring-2" :class="errors.redeemKey ? 'border-red-400/70 focus:border-red-400/70 focus:ring-red-400/10' : 'border-gray-700/50 focus:border-fuchsia-500/60 focus:ring-fuchsia-500/10'" />
-                        <span v-if="errors.redeemKey" id="redeem-key-error" class="mt-2 block text-xs text-red-400">{{ errors.redeemKey }}</span>
+                        <input v-model="form.redeemKey" @input="handleRedeemKeyInput" type="text" name="redeemKey" autocomplete="off" placeholder="XXXX-XXXX-XXXX-XXXX" :aria-invalid="!!(touched.redeemKey && errors.redeemKey)" aria-describedby="redeem-key-error" class="mt-2 h-12 w-full rounded-xl border bg-gray-500/5 px-4 text-sm tracking-wider text-white outline-none transition placeholder:text-zinc-600 focus:ring-2" :class="touched.redeemKey && errors.redeemKey ? 'border-red-400/70 focus:border-red-400/70 focus:ring-red-400/10' : 'border-gray-700/50 focus:border-fuchsia-500/60 focus:ring-fuchsia-500/10'" />
+                        <span v-if="touched.redeemKey && errors.redeemKey" id="redeem-key-error" class="mt-2 block text-xs text-red-400">{{ errors.redeemKey }}</span>
                     </label>
                 </div>
 
-                <button @click="redeemKey" type="submit" class="cursor-pointer mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-linear-270 from-fuchsia-400 to-fuchsia-700 text-sm font-semibold text-white shadow-[0_0_28px_rgba(217,70,239,0.28)] transition hover:bg-fuchsia-400">
+                <button type="submit" class="cursor-pointer mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-xl bg-linear-270 from-fuchsia-400 to-fuchsia-700 text-sm font-semibold text-white shadow-[0_0_28px_rgba(217,70,239,0.28)] transition hover:bg-fuchsia-400">
                     Redeem Key
                 </button>
-
-                <p v-if="submitted" class="mt-4 text-center text-xs text-emerald-400">Your key is ready to be redeemed.</p>
 
                 <div class="mt-8 flex items-center justify-center gap-2 border-t border-gray-700/30 pt-6 text-xs text-zinc-500">
                     - Keys are securely validated -
