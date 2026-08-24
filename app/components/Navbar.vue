@@ -18,7 +18,7 @@
 
 
 <template>
-    <nav class="fixed top-0 z-99 flex w-full justify-center bg-black/50 py-3 backdrop-blur-lg sm:py-4 md:backdrop-blur-2xl">
+    <nav class="fixed top-0 z-99 flex w-full justify-center bg-black/50 py-3 backdrop-blur-none sm:py-4 md:backdrop-blur-2xl">
         <div class="absolute w-150 h-150 bg-fuchsia-700/10 -top-50 rounded-full blur-[150px] left-1/2 -translate-x-1/2 pointer-events-none select-none"></div>
 
         <div class="flex h-full w-full max-w-300 items-center justify-between gap-3 px-5 sm:px-8">
@@ -48,7 +48,7 @@
         </div>
 
         <Transition enter-active-class="transition duration-100 ease-out" enter-from-class="-translate-y-2 opacity-0" enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-100 ease-in" leave-from-class="translate-y-0 opacity-100" leave-to-class="-translate-y-2 opacity-0">
-            <div v-if="menuOpen" id="navigation-menu" class="absolute left-0 top-full z-10 w-full rounded-xl border border-fuchsia-500/10 bg-fuchsia-900/5 px-5 py-3 shadow-xl backdrop-blur-2xl sm:px-8 md:hidden">
+            <div v-if="menuOpen" id="navigation-menu" class="absolute left-0 top-full z-10 w-full rounded-xl border border-fuchsia-500/10 bg-black/55 px-5 py-3 shadow-xl backdrop-blur-2xl sm:px-8 md:hidden">
                 <ul class="flex flex-col gap-1 text-sm text-gray-200/80">
                     <li><NuxtLink to="/" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/')" @click="menuOpen = false">Home</NuxtLink></li>
                     <li><NuxtLink to="/redeem" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/redeem')" @click="menuOpen = false">Redeem Key</NuxtLink></li>
