@@ -1,5 +1,5 @@
 <template>
-    <main class="content-left-enter relative z-10 mx-auto flex min-h-screen w-full max-w-300 flex-col items-center justify-center gap-4 px-4 pb-16 pt-28 sm:px-8">
+    <main class="content-left-enter relative z-10 mx-auto flex min-h-screen w-full max-w-300 flex-col items-center justify-start gap-4 px-4 pb-16 pt-[30vh] sm:justify-center sm:px-8 sm:pb-16 sm:pt-28">
         <p class="flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.28em] text-fuchsia-400">
             <span class="w-2 h-2 rounded-full bg-fuchsia-400 shadow-[0_0_10px_rgba(217,70,239,0.7)]"></span>
             DISCORIUM.CC

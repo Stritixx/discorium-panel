@@ -44,7 +44,7 @@
         </div>
 
         <Transition enter-active-class="transition duration-100 ease-out" enter-from-class="-translate-y-2 opacity-0" enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-100 ease-in" leave-from-class="translate-y-0 opacity-100" leave-to-class="-translate-y-2 opacity-0">
-            <div v-if="menuOpen" id="navigation-menu" class="absolute left-0 top-full w-full rounded-xl bg-black/15 px-5 py-3 shadow-xl backdrop-blur-lg sm:px-8 md:hidden">
+            <div v-if="menuOpen" id="navigation-menu" class="absolute left-0 top-full w-full rounded-xl bg-black/15 px-5 py-3 shadow-xl backdrop-blur-xl sm:px-8 md:hidden">
                 <ul class="flex flex-col gap-1 text-sm text-gray-200/80">
                     <li><NuxtLink to="/" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/')" @click="menuOpen = false">Home</NuxtLink></li>
                     <li><NuxtLink to="/redeem" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/redeem')" @click="menuOpen = false">Redeem Key</NuxtLink></li>
