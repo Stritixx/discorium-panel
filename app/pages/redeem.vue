@@ -58,8 +58,11 @@ function validateForm() {
 
         <div class="content-right-enter flex w-full flex-col items-center justify-center gap-6">
             <div class="w-full max-w-xl lg:hidden mb-8">
-                <p class="flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[0.28em] text-fuchsia-400 justify-center">MEMBER ACCESS</p>
-                <h2 class="mt-3 text-6xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-7xl text-center max-[400px]:text-5xl">Redeem your <span class="bg-linear-to-r from-white via-fuchsia-200 to-fuchsia-500 bg-clip-text text-transparent">member key</span></h2>
+                <p class="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-fuchsia-400 justify-center">
+                    <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400 shadow-[0_0_10px_rgba(217,70,239,0.7)]"></span>
+                    MEMBER ACCESS
+                </p>
+                <h2 class="mt-3 text-6xl font-bold leading-tight tracking-[-0.04em] text-white sm:text-7xl text-center max-[400px]:text-5xl">Redeem your <span class="bg-linear-to-r from-white via-fuchsia-200 to-fuchsia-500 bg-clip-text text-transparent">member key</span></h2>
             </div>
 
             <form id="redeem" class="w-full max-w-xl rounded-2xl border border-gray-700/40 bg-black/5 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.35)] sm:p-8" novalidate @submit.prevent="validateForm">

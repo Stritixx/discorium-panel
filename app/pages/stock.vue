@@ -39,7 +39,7 @@
 </script>
 
 <template>
-    <main class="relative z-10 mx-auto flex min-h-screen w-full max-w-300 items-center px-5 pb-10 pt-28 sm:px-8 flex-wrap justify-center flex-col gap-12">
+    <main class="relative z-10 mx-auto flex min-h-screen w-full max-w-300 items-center px-5 pb-14 pt-28 sm:px-8 sm:pb-10 flex-wrap justify-center flex-col gap-12">
         <div class="flex w-full flex-col gap-6 lg:flex-row lg:items-end lg:gap-8">
             <div class="flex w-full flex-col justify-end lg:w-1/2">
                 <div class="stock-heading-enter w-full flex flex-col gap-4">
