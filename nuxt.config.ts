@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 				},
 				{
 					name: 'robots',
-					content: 'noindex, nofollow'
+					content: 'index, follow'
 				},
 				{
 					property: 'og:title',
