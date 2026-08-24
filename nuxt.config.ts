@@ -88,6 +88,14 @@ export default defineNuxtConfig({
 					name: 'msapplication-TileColor',
 					content: '#ed38fe'
 				}
+			],
+
+			link: [
+				{
+					rel: 'icon',
+					type: 'image/png',
+					href: '/images/logo.png'
+				}
 			]
 		}
 	}
