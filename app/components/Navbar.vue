@@ -13,15 +13,19 @@
     }
 </script>
 
+
+
+
+
 <template>
     <nav class="fixed top-0 z-99 flex w-full justify-center bg-black/50 py-3 backdrop-blur-none sm:py-4 md:backdrop-blur-2xl">
         <div class="absolute w-150 h-150 bg-fuchsia-700/10 -top-50 rounded-full blur-[150px] left-1/2 -translate-x-1/2 pointer-events-none select-none"></div>
 
         <div class="flex h-full w-full max-w-300 items-center justify-between gap-3 px-5 sm:px-8">
-            <NuxtLink to="/" class="flex shrink-0 items-center gap-3">
-                <img src="/images/logo.png" width="42" height="42" alt="Logo" class="drop-shadow-[0_0_22px_rgba(217,70,239,0.3)]" />
+            <NuxtLink to="/" class="flex shrink-0 items-center gap-3" aria-label="Discorium - Home">
+                <img src="/images/logo.png" width="42" height="42" alt="" class="drop-shadow-[0_0_22px_rgba(217,70,239,0.3)]" />
 
-                <h1 class="text-primary text-[16px] font-semibold">Discorium</h1>
+                <span class="text-primary text-[16px] font-semibold">Discorium</span>
             </NuxtLink>
 
             <div class="hidden md:block">

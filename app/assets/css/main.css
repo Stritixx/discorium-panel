@@ -7,6 +7,8 @@
     --color-secondary: #1e1e1e;
 }
 
+
+
 @keyframes page-fade-up {
     from {
         opacity: 0;
@@ -19,55 +21,81 @@
     }
 }
 
+
+
 .content-right-enter {
     animation: page-fade-up 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+
 
 .content-left-enter > * {
     opacity: 0;
     animation: page-fade-up 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+
+
 .content-left-enter > :nth-child(1) {
     animation-delay: 100ms;
 }
+
+
 
 .content-left-enter > :nth-child(2) {
     animation-delay: 180ms;
 }
 
+
+
 .content-left-enter > :nth-child(3) {
     animation-delay: 260ms;
 }
+
+
 
 .content-left-enter > :nth-child(4) {
     animation-delay: 340ms;
 }
 
+
+
 .content-right-enter {
     animation-delay: 150ms;
 }
+
+
 
 .stock-heading-enter > * {
     opacity: 0;
     animation: page-fade-up 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+
+
 .stock-heading-enter > :nth-child(1) {
     animation-delay: 60ms;
 }
+
+
 
 .stock-refresh-enter {
     animation: page-fade-up 650ms 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+
+
 .stock-heading-enter > :nth-child(2) {
     animation-delay: 120ms;
 }
 
+
+
 .stock-heading-enter > :nth-child(3) {
     animation-delay: 180ms;
 }
+
+
 
 @keyframes stock-box-slide {
     from {
@@ -79,6 +107,8 @@
     }
 }
 
+
+
 @keyframes stock-box-cover-fade {
     from {
         opacity: 1;
@@ -89,31 +119,45 @@
     }
 }
 
+
+
 .stock-box-enter {
     animation: stock-box-slide 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+
 
 .stock-box-enter .stock-box-fade-cover {
     animation: stock-box-cover-fade 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+
+
 .stock-box-first-enter {
     animation-delay: 300ms;
 }
+
+
 
 .stock-box-left-enter,
 .stock-box-left-enter .stock-box-fade-cover {
     animation-delay: 300ms;
 }
 
+
+
 .stock-box-right-enter,
 .stock-box-right-enter .stock-box-fade-cover {
     animation-delay: 350ms;
 }
 
+
+
 .stock-cards-enter {
     animation: stock-cards-reveal 800ms 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+
 
 @keyframes stock-cards-reveal {
     from {
@@ -127,11 +171,15 @@
     }
 }
 
+
+
 .stock-status-glass {
     background: rgb(5 5 6 / 0.06);
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
 }
+
+
 
 @keyframes nav-highlight-flow {
     from {
@@ -143,11 +191,15 @@
     }
 }
 
+
+
 .nav-link-active {
     background-image: linear-gradient(90deg, rgba(217, 70, 239, 0.08), rgba(217, 70, 239, 0.2), rgba(217, 70, 239, 0.08));
     background-size: 220% 100%;
     animation: nav-highlight-flow 350ms ease-out both;
 }
+
+
 
 @media (prefers-reduced-motion: reduce) {
     .content-left-enter > *,
