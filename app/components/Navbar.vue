@@ -14,7 +14,7 @@
 </script>
 
 <template>
-    <nav class="fixed top-0 z-99 flex w-full justify-center py-3 sm:py-4 bg-black/50">
+    <nav class="fixed top-0 z-99 flex w-full justify-center py-3 sm:py-4 bg-black/50 backdrop-blur-2xl">
         <div class="absolute w-150 h-150 bg-fuchsia-700/10 -top-50 rounded-full blur-[150px] left-1/2 -translate-x-1/2 pointer-events-none select-none"></div>
 
         <div class="flex h-full w-full max-w-300 items-center justify-between gap-3 px-5 sm:px-8">
