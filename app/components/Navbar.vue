@@ -34,6 +34,7 @@
                     <li><NuxtLink to="/" class="block rounded-md px-4 py-2 transition-all duration-150" :class="linkClasses('/')">Home</NuxtLink></li>
                     <li><NuxtLink to="/redeem" class="block rounded-md px-4 py-2 transition-all duration-150" :class="linkClasses('/redeem')">Redeem Key</NuxtLink></li>
                     <li><NuxtLink to="/stock" class="block rounded-md px-4 py-2 transition-all duration-150" :class="linkClasses('/stock')">Stock</NuxtLink></li>
+                    <li><NuxtLink to="/faq" class="block rounded-md px-4 py-2 transition-all duration-150" :class="linkClasses('/faq')">FAQ</NuxtLink></li>
                 </ul>
             </div>
 
@@ -55,6 +56,7 @@
                     <li><NuxtLink to="/" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/')" @click="menuOpen = false">Home</NuxtLink></li>
                     <li><NuxtLink to="/redeem" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/redeem')" @click="menuOpen = false">Redeem Key</NuxtLink></li>
                     <li><NuxtLink to="/stock" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/stock')" @click="menuOpen = false">Stock</NuxtLink></li>
+                    <li><NuxtLink to="/faq" class="block rounded-md px-3 py-2 transition-all duration-150" :class="linkClasses('/faq')" @click="menuOpen = false">FAQ</NuxtLink></li>
                     <NuxtLink to="https://discorium.cc/" class="block rounded-md px-3 py-2 hover:bg-gray-500/5" @click="menuOpen = false">Shop</NuxtLink>
                 </ul>
             </div>
