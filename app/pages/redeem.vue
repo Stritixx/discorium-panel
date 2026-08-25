@@ -7,7 +7,7 @@
         ]
 	});
 
-    import { reactive, ref } from 'vue'
+    import { ref } from 'vue'
 
     const redeemButton = ref(null)
     const isSubmitting = ref(false)
@@ -15,60 +15,60 @@
     const popupTitle = ref('Request failed')
     const popupMessage = ref('Something went wrong while redeeming the key.')
 
-    const form = reactive({
+    const form = ref({
         serverId: '',
         redeemKey: '',
     })
 
-    const errors = reactive({
+    const errors = ref({
         serverId: '',
         redeemKey: '',
     })
 
-    const touched = reactive({
+    const touched = ref({
         serverId: false,
         redeemKey: false,
     })
 
     const validateField = (field) => {
-        const value = form[field].trim()
+        const value = form.value[field].trim()
 
         if (field === 'serverId') {
             if (!value) {
-                errors.serverId = 'Server ID is required.'
+                errors.value.serverId = 'Server ID is required.'
             } else if (!/^\d{17,20}$/.test(value)) {
-                errors.serverId = 'Enter a valid Discord server ID.'
+                errors.value.serverId = 'Enter a valid Discord server ID.'
             } else {
-                errors.serverId = ''
+                errors.value.serverId = ''
             }
         }
 
         if (field === 'redeemKey') {
             if (!value) {
-                errors.redeemKey = 'Redeem key is required.'
+                errors.value.redeemKey = 'Redeem key is required.'
             } else if (!/^[A-Za-z0-9]{4}(?:-[A-Za-z0-9]{4}){3}$/.test(value)) {
-                errors.redeemKey = 'Use the format XXXX-XXXX-XXXX-XXXX.'
+                errors.value.redeemKey = 'Use the format XXXX-XXXX-XXXX-XXXX.'
             } else {
-                errors.redeemKey = ''
+                errors.value.redeemKey = ''
             }
         }
     }
 
     function validateForm() {
-        touched.serverId = true
-        touched.redeemKey = true
+        touched.value.serverId = true
+        touched.value.redeemKey = true
         validateField('serverId')
         validateField('redeemKey')
     }
 
     const handleServerIdInput = () => {
-        if (touched.serverId) {
+        if (touched.value.serverId) {
             validateField('serverId')
         }
     }
 
     const handleRedeemKeyInput = () => {
-        if (touched.redeemKey) {
+        if (touched.value.redeemKey) {
             validateField('redeemKey')
         }
     }
@@ -90,20 +90,43 @@
 
         validateForm()
 
-        if (!errors.serverId && !errors.redeemKey) {
+        if (!errors.value.serverId && !errors.value.redeemKey) {
             isSubmitting.value = true
 
             try {
                 const response = await $fetch('https://delivery.discorium.cc/api/order', {
                     method: 'POST',
                     body: {
-                        guild_id: form.serverId,
-                        key: form.redeemKey,
+                        guild_id: form.value.serverId,
+                        key: form.value.redeemKey,
                     },
                 })
 
-                const message = response?.message
-                console.log(message)
+                if (response?.success && (response?.guild_id || response?.key)) {
+                    const orderState = {
+                        server_id: form.value.serverId,
+                        guild_id: response.guild_id || '',
+                        members_type: response.members_type || '',
+                        quantity: response.quantity || 0,
+                        key: response.key || form.value.redeemKey,
+                    }
+
+                    if (import.meta.client) {
+                        sessionStorage.setItem('order_flow_state', JSON.stringify(orderState))
+                    }
+
+                    await navigateTo({
+                        path: '/order',
+                        query: {
+                            key: orderState.key,
+                        },
+                    })
+
+                    return
+                }
+
+                const message = response?.message || response?.error || 'An unexpected error occurred.'
+                openErrorPopup('Request failed', message)
             } catch (error) {
                 const statusCode = error?.statusCode || error?.response?.status || 500
                 const backendMessage = error?.data?.error || error?.data?.message || 'An unexpected error occurred while redeeming your key.'
@@ -185,12 +208,7 @@
                     </label>
                 </div>
 
-                <button
-                    ref="redeemButton"
-                    type="submit"
-                    :disabled="isSubmitting"
-                    class="mt-8 flex h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-xl bg-linear-270 from-fuchsia-400 to-fuchsia-700 text-sm font-semibold text-white shadow-[0_0_28px_rgba(217,70,239,0.28)] transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(217,70,239,0.4)] disabled:cursor-not-allowed disabled:opacity-70"
-                >
+                <button ref="redeemButton" type="submit" :disabled="isSubmitting" class="mt-8 flex h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-xl bg-linear-270 from-fuchsia-400 to-fuchsia-700 text-sm font-semibold text-white shadow-[0_0_28px_rgba(217,70,239,0.28)] transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(217,70,239,0.4)] disabled:cursor-not-allowed disabled:opacity-70">
                     <span v-if="isSubmitting" class="inline-block h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"></span>
                     {{ isSubmitting ? 'Processing...' : 'Redeem Key' }}
                 </button>
