@@ -19,6 +19,10 @@
             answer: 'To protect your server and avoid triggering Discord’s automated security systems, members join one-by-one with a staggered delay of roughly 1.5 seconds between each join. A delivery of 100 members takes about 2-3 minutes.'
         },
         {
+            question: 'Are accounts looks liek bots?',
+            answer: 'No, we are using scrapped profiles from over 30M+ real users to make it most realistic. Accounts got unique avatars, usernames, biograms. Some accounts also own badges and decorations. '
+        },
+        {
             question: 'Can I redeem multiple keys?',
             answer: 'You can redeem one key at a time through the panel. If you need more access, simply start a new redemption once the previous one is completed.'
         },
