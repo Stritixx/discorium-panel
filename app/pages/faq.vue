@@ -16,7 +16,7 @@
         },
         {
             question: 'How long does it take for members to be added?',
-            answer: 'To protect your server and avoid triggering Discord’s automated security systems, members join one-by-one with a staggered delay of roughly 1.5 seconds between each join. A delivery of 100 members takes about 2-3 minutes.'
+            answer: 'To protect your server and avoid triggering Discord’s automated security systems, members join one-by-one with a staggered delay of roughly 2.5 seconds between each join. A delivery of 100 members takes about 4-5 minutes.'
         },
         {
             question: 'Are accounts looks liek bots?',
