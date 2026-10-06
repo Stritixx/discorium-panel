@@ -14,7 +14,7 @@
     
     const fetchStock = async () => {
         try {
-            const response = await fetch("https://delivery.discorium.cc/api/stock");
+            const response = await fetch("https://delivery.discorium.cc/api/v2/stock");
             const data = await response.json();
             
             offline.value = data.offline;
