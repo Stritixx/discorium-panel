@@ -94,7 +94,7 @@
             isSubmitting.value = true
 
             try {
-                const response = await $fetch('https://delivery.discorium.cc/api/order', {
+                const response = await $fetch('https://delivery.discorium.cc/api/v2/order', {
                     method: 'POST',
                     body: {
                         guild_id: form.value.serverId,
