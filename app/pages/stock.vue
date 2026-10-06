@@ -14,7 +14,7 @@
     
     const fetchStock = async () => {
         try {
-            const response = await fetch("http://176.100.37.219:26003/api/v2/stock");
+            const response = await fetch("https://176.100.37.219:26003/api/v2/stock");
             const data = await response.json();
             
             offline.value = data.offline;
