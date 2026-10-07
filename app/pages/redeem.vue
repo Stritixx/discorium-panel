@@ -109,6 +109,7 @@
                         members_type: response.members_type || '',
                         quantity: response.quantity || 0,
                         key: response.key || form.value.redeemKey,
+                        invite: response.invite || ''
                     }
 
                     if (import.meta.client) {
@@ -119,6 +120,7 @@
                         path: '/order',
                         query: {
                             key: orderState.key,
+                            invite: orderState.invite || '',
                         },
                     })
 
