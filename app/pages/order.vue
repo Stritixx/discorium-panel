@@ -9,6 +9,7 @@
         membersType: '',
         quantity: 0,
         key: '',
+        invite: '',
     })
 
 
@@ -35,12 +36,16 @@
         orderData.value.membersType = String(response?.members_type || '')
         orderData.value.quantity = Number(response?.quantity || 0)
         orderData.value.key = String(response?.key || fallbackKey || '')
+        orderData.value.invite = String(response?.invite || orderData.value.invite || '')
     }
 
 
     const loadFromQuery = () => {
         const queryKey = String(route.query.key || '')
+        const queryInvite = String(route.query.invite || '')
+
         orderData.value.key = queryKey
+        orderData.value.invite = queryInvite
 
         if (queryKey) {
             isLoadingDetails.value = true
