@@ -168,7 +168,7 @@
                     </div>
                 </div>
 
-                <a href="https://discord.com/oauth2/authorize?client_id=1540333008501084160&permissions=8&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer" class="mt-7 flex h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-xl bg-[#5865F2] text-sm font-semibold text-white shadow-[0_0_28px_rgba(88,101,242,0.28)] transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(88,101,242,0.4)]">
+                <a :href="discordAuthUrl" target="_blank" rel="noopener noreferrer" class="mt-7 flex h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-xl bg-[#5865F2] text-sm font-semibold text-white shadow-[0_0_28px_rgba(88,101,242,0.28)] transition duration-200 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(88,101,242,0.4)]">
                     <SvgDiscord class="h-4 w-4" />
                     Add bot
                 </a>
