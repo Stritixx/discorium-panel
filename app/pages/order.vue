@@ -22,10 +22,6 @@
 
     
     const payload = computed(() => ({
-        server_id: orderData.value.serverId,
-        guild_id: orderData.value.guildId,
-        members_type: orderData.value.membersType,
-        quantity: Number(orderData.value.quantity),
         key: orderData.value.key,
     }))
 
@@ -99,7 +95,7 @@
         isSubmitting.value = true
 
         try {
-            const response = await $fetch.raw('https://delivery.discorium.cc/api/order/start', {
+            const response = await $fetch.raw('https://delivery.discorium.cc/api/v2/order/start', {
                 method: 'POST',
                 body: payload.value,
             })
